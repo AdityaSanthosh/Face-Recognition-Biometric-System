@@ -1,4 +1,3 @@
-import time
 from scipy.spatial import distance
 import face_recognition
 from datetime import datetime
@@ -11,8 +10,6 @@ def recognize_attendance():
     eyes_opened_time = 0
     known_face_encodings = np.load('encode-data.npy', allow_pickle=True)
     known_face_names = np.load('known-faces.npy', allow_pickle=True)
-    print(known_face_encodings)
-    print(known_face_names)
 
     def markAttendance(name):
         with open('Attendance_Records/Attendance.csv', 'r+') as f:
@@ -78,7 +75,6 @@ def recognize_attendance():
                     cap.release()
                     cv2.destroyAllWindows()
                     break
-
 
 
 def get_ear(eye):
