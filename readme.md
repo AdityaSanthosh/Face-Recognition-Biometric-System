@@ -15,3 +15,5 @@ _Algorithm_:
 _Implementation_:
 * Used Python Language
 * OpenCV, dlib, face_recogntion Libraries
+
+_This code is deployment ready upon slight few changes_
