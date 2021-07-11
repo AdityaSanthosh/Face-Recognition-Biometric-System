@@ -20,8 +20,8 @@ def recognize_attendance():
                 face_names.append(entry[0])
             if name not in face_names:
                 now = datetime.now()
-                dtString = now.strftime('%H:%M:%S')
-                f.writelines(f'\n{name},{dtString}')
+                dtString = now.strftime('%H:%M')
+                f.writelines(f'\n{name},{dtString},{datetime.today().strftime("%d-%m-%Y")}')
 
     cap = cv2.VideoCapture(0)
 

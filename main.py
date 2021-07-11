@@ -7,6 +7,7 @@ import Recognize
 
 def title_bar():
     os.system('clear')
+    os.system('cls')
     # title of the program
     print("\t**********************************************")
     print("\t***** Face Recognition Attendance System *****")
