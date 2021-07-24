@@ -17,3 +17,5 @@ _Implementation_:
 * OpenCV, dlib, face_recogntion Libraries
 
 _This code is deployment ready upon slight few changes_
+
+![img.png](img.png)

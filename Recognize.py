@@ -42,7 +42,7 @@ def recognize_attendance():
                 eyes_closed_time += 1
             else:
                 eyes_opened_time += 1
-            if True:
+            if eyes_closed_time > 1 and eyes_opened_time > 1:
                 current_face_locations = face_recognition.face_locations(rgb_small_frame)
                 current_face_encodings = face_recognition.face_encodings(rgb_small_frame, current_face_locations)
 

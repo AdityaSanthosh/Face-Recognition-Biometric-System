@@ -6,7 +6,7 @@ import Recognize
 
 
 def title_bar():
-    os.system('clear')
+    # os.system('clear')
     os.system('cls')
     # title of the program
     print("\t**********************************************")
@@ -18,10 +18,10 @@ def main_menu():
     title_bar()
     print(10 * "*", "WELCOME MENU", 10 * "*")
     print("[1] Check Camera")
-    print("[2] Capture Image")
-    print("[3] Train Image")
-    print("[4] Record Attendance")
-    print("[5] Quit")
+    print("[2] New User")
+    # print("[3] Train Image")
+    print("[3] Record Attendance")
+    print("[4] Quit")
 
     while True:
         try:
@@ -32,20 +32,20 @@ def main_menu():
             elif choice == 2:
                 CaptureImage()
                 break
+            # elif choice == 3:
+            #     TrainImage()
+            #     break
             elif choice == 3:
-                TrainImage()
-                break
-            elif choice == 4:
                 record_attendance()
                 break
-            elif choice == 5:
+            elif choice == 4:
                 print("Have a Nice Day!")
                 break
             else:
-                print("Invalid Choice. Enter 1-4")
+                print("Invalid Choice. Enter 1-3")
                 main_menu()
         except ValueError:
-            print("Invalid Choice. Enter 1-4\n Try Again")
+            print("Invalid Choice. Enter 1-3\n Try Again")
     exit
 
 
@@ -60,11 +60,11 @@ def CaptureImage():
     key = input("Enter any key to return main menu")
     main_menu()
 
-
-def TrainImage():
-    ImageTrainer.train_image()
-    key = input("Enter any key to return main menu")
-    main_menu()
+#
+# def TrainImage():
+#     ImageTrainer.train_image()
+#     key = input("Enter any key to return main menu")
+#     main_menu()
 
 def record_attendance():
     Recognize.recognize_attendance()

@@ -19,7 +19,7 @@ def capture_image():
     import face_recognition
     import cv2
     import csv
-    import numpy as np
+    import ImageTrainer
     import os
 
     print("Once Added, the Details of the student such as Face cannot be changed. Proceed with Caution!")
@@ -56,10 +56,12 @@ def capture_image():
                 cv2.imwrite("StudentDetails" + os.sep + "StudentPictures" + os.sep + name + "." + id +
                             ".jpg", rgb_small_frame)
 
+
             # display the frame
             cv2.imshow('frame', frame)
             # wait for 100 milliseconds
             if cv2.waitKey(100) & 0xFF == ord('q'):
+                ImageTrainer.train_image()
                 print('exited..\n')
                 break
 
