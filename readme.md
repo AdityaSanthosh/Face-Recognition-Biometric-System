@@ -1,5 +1,11 @@
 ## **Face Recognition Biometric System**
 
+![img.png](img.png)
+
+_This is the user Interface_:
+
+![Capture.PNG](Capture.PNG)
+
 _Features:_
 * Robust in anti-cheating measures
 * **99.4% Accuracy** in detection.
@@ -18,10 +24,4 @@ _Implementation_:
 
 _This code is deployment ready upon slight few changes_
 
-_Result_:
 
-![img.png](img.png)
-
-_This is the user Interface_:
-
-![Capture.PNG](Capture.PNG)
