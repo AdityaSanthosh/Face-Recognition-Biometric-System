@@ -11,6 +11,8 @@ _Features:_
 * **99.4% Accuracy** in detection.
 * Attendance with Time is stored into the database.
 * Very Accurate in Different Light Conditions especially low-light
+* Searches if the newly registering user already exists in the database or
+if his name or id are already present in the system.
 
 _Algorithm_:
 * Uses Dlib's Histogram of Oriented Gradients Technique for Face Detection and Orientation

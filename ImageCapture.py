@@ -21,11 +21,20 @@ def capture_image():
     import csv
     import ImageTrainer
     import os
+    import numpy as np
 
+    known_faces_data = np.load('known-faces-data.npy', allow_pickle=True)
+    known_faces_names, known_faces_ids = zip(*known_faces_data)
     print("Once Added, the Details of the student such as Face cannot be changed. Proceed with Caution!")
     print("press q to exit from the Camera")
     id = input("Enter new ID:")
+    while id in known_faces_ids:
+        print("This id already exists. Enter a new id")
+        id = input("Enter new id:")
     name = input("Enter new Name:")
+    while name or name.lower() or name.upper() in known_faces_names:
+        print("This name already exists. Please enter a new name. Or perhaps add an Initial and try again")
+        name = input("Enter new Name:")
 
     cap = cv2.VideoCapture(0)
 

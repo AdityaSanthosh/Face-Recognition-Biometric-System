@@ -14,17 +14,19 @@ def findEncoding(img):
 def train_image():
     path = "StudentDetails/StudentPictures"
     encodeList = []
-    known_faces = []
+    known_face_names = []
+    known_face_ids = []
 
     for imagefilename in os.listdir(path):
         curImg = cv2.imread(path+'/'+imagefilename)
-        print(imagefilename)
-        known_faces.append(imagefilename.split('.')[0])
+        known_face_names.append(imagefilename.split('.')[0])
+        known_face_ids.append(imagefilename.split('.')[1])
         encoding = findEncoding(curImg)
         encodeList.append(encoding)
 
+    known_faces_data = list(zip(known_face_names, known_face_ids))
     save('encode-data.npy', encodeList)
-    save('known-faces.npy', known_faces)
+    save('known-faces-data.npy', known_faces_data)
     print(encodeList)
-    print(known_faces)
+    print(known_faces_data)
     print("encoding Complete")

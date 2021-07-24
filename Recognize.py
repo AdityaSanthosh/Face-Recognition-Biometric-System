@@ -9,7 +9,7 @@ def recognize_attendance():
     eyes_closed_time = 0
     eyes_opened_time = 0
     known_face_encodings = np.load('encode-data.npy', allow_pickle=True)
-    known_face_names = np.load('known-faces.npy', allow_pickle=True)
+    known_faces_data = np.load('known-faces-data.npy', allow_pickle=True)
 
     def markAttendance(name):
         with open('Attendance_Records/Attendance.csv', 'r+') as f:
@@ -53,7 +53,9 @@ def recognize_attendance():
                     matchIndex = np.argmin(faceDis)
 
                     if matches[matchIndex]:
-                        name = known_face_names[matchIndex]
+                        known_faces, face_id = zip(*known_faces_data)
+                        name = known_faces[matchIndex]
+                        id = face_id[matchIndex]
                         markAttendance(name)
 
                         # Scale back up face locations since the frame we detected in was scaled to 1/4 size
@@ -65,7 +67,7 @@ def recognize_attendance():
                     cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
                     cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
                     font = cv2.FONT_HERSHEY_DUPLEX
-                    cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+                    cv2.putText(frame, name + str(id), (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
                 # display the frame
                 cv2.imshow('Video', frame)
