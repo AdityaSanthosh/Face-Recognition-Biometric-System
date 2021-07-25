@@ -14,6 +14,7 @@ _Features:_
 * Searches if the newly registering user already exists in the database or
 if his name or id are already present in the system.
 * Ability to Safely remove a user from the system
+* Confidence Score system to prevent false positives
 
 _Algorithm_:
 * Uses Dlib's Histogram of Oriented Gradients Technique for Face Detection and Orientation

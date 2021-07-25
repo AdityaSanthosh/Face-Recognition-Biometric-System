@@ -3,6 +3,7 @@ import face_recognition
 from datetime import datetime
 import cv2
 import numpy as np
+import dlib
 
 
 def recognize_attendance():
@@ -46,6 +47,11 @@ def recognize_attendance():
                 current_face_locations = face_recognition.face_locations(rgb_small_frame)
                 current_face_encodings = face_recognition.face_encodings(rgb_small_frame, current_face_locations)
 
+                detector = dlib.get_frontal_face_detector()
+                dets, scores, idx = detector.run(rgb_small_frame, 1, -1)
+                for i in scores:
+                    Detectionscore = i % 100 * 100
+                dontremovedetectionscore = Detectionscore
                 for (top, right, bottom, left), face_encoding in zip(current_face_locations,
                                                                      current_face_encodings):
                     matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
@@ -67,16 +73,20 @@ def recognize_attendance():
                     cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
                     cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
                     font = cv2.FONT_HERSHEY_DUPLEX
-                    cv2.putText(frame, name + str(id), (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+                    if dontremovedetectionscore > 70:
+                        dontremovedetectionscore = round(dontremovedetectionscore,1)
+                        cv2.putText(frame, name + " " + str(id) + str(dontremovedetectionscore), (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+                    else:
+                        cv2.putText(frame, "low confidence of detection", (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-                # display the frame
-                cv2.imshow('Video', frame)
-                # wait for 100 milliseconds
-                if cv2.waitKey(100) & 0xFF == ord('q'):
-                    print('exited..\n')
-                    cap.release()
-                    cv2.destroyAllWindows()
-                    break
+        # display the frame
+        cv2.imshow('Video', frame)
+        # wait for 100 milliseconds
+        if cv2.waitKey(100) & 0xFF == ord('q'):
+            print('exited..\n')
+            cap.release()
+            cv2.destroyAllWindows()
+            break
 
 
 def get_ear(eye):
