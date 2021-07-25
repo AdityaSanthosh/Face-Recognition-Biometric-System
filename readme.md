@@ -30,5 +30,5 @@ _This code is deployment ready upon slight few changes_
 
 *Future Work*
 
-* Will add a Database and confidence score system if possible
+* Will add more features which come accross my mind
 
