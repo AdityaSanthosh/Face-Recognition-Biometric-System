@@ -5,6 +5,7 @@ import ImageTrainer
 import Recognize
 import remove_user
 
+
 def title_bar():
     # os.system('clear')
     os.system('cls')
@@ -33,13 +34,13 @@ def main_menu():
             CaptureImage()
             break
         elif choice == 3:
-            TrainImage()
+            train_image()
             break
         elif choice == 4:
             record_attendance()
             break
         elif choice == 5:
-            removeUser()
+            remove_user()
             break
         elif choice == 6:
             print("Have a Nice Day!")
@@ -55,32 +56,35 @@ def main_menu():
 
 def check_camera():
     CameraCheck.camera_check()
-    key = input("Enter any key to return main menu")
+    input("Enter any key to return main menu")
     main_menu()
 
 
 def CaptureImage():
     ImageCapture.capture_image()
-    key = input("Enter any key to return main menu")
+    input("Enter any key to return main menu")
     main_menu()
-
 
 
 def record_attendance():
     Recognize.recognize_attendance()
-    key = input("Enter any key to return main menu")
+    input("Enter any key to return main menu")
     main_menu()
 
 
-def removeUser():
-    remove_user.remove_user()
-    key = input("Enter any key to return main menu")
+def remove_user():
+    print("Remove an existing User from the database\n This action cannot be undone")
+    user_id = str(input("Enter the id of the user you want to remove"))
+    remove_user.remove_user(user_id)
+    input("Enter any key to return main menu")
     main_menu()
 
-def TrainImage():
+
+def train_image():
     ImageTrainer.train_image()
-    key = input("Enter any key to return main menu")
+    input("Enter any key to return main menu")
     main_menu()
 
-# main driver
-main_menu()
+
+if __name__ == "__main__":
+    main_menu()
